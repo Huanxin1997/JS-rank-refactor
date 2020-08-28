@@ -1,5 +1,5 @@
 const rankTest = require('ava');
-const {voyageRisk} = require('../src/rank');
+const {voyageRisk, hasChina} = require('../src/rank');
 
 rankTest('voyageRisk case 1. should return 1 when voyageRisk given voyage length is 4', t => {
     const voyage = {
@@ -53,4 +53,16 @@ rankTest('voyageRisk case 6. should return 7 when voyageRisk given voyage length
     };
     const result = voyageRisk(voyage);
     t.is(result, 8);
+});
+
+rankTest('hasChina case 1. should return true when hasChina given history include china', t => {
+    const history = [
+        {
+            zone: 'china',
+            profit: 0,
+        }
+    ];
+
+    const result = hasChina(history);
+    t.is(result, true);
 });
